@@ -86,6 +86,7 @@ module JasperRails
       ::Rails.logger.debug "before calling _JasperFillManager.fillReport"
       jasper_print = _JasperFillManager.fillReport(jasper_file, jasper_params)
       ::Rails.logger.debug "after calling _JasperFillManager.fillReport"
+      jasper_print
     end
 
     def export jasper_print, jr_exporter
