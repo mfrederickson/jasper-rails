@@ -83,7 +83,9 @@ module JasperRails
 
     def generate_jasper_print jasper_params, jasper_file
       _JasperFillManager = Rjb::import 'net.sf.jasperreports.engine.JasperFillManager'
+      ::Rails.logger.debug "before calling _JasperFillManager.fillReport"
       jasper_print = _JasperFillManager.fillReport(jasper_file, jasper_params)
+      ::Rails.logger.debug "after calling _JasperFillManager.fillReport"
     end
 
     def export jasper_print, jr_exporter
