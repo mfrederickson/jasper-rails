@@ -64,8 +64,9 @@ module JasperRails
       
       # Fill the report
       if datasource
+        opts = JasperRails.config[:xml_options].merge(controller_options)
         input_source = _InputSource.new
-        input_source.setCharacterStream(_StringReader.new(datasource.to_xml(JasperRails.config[:xml_options].update(controller_options)).to_s))
+        input_source.setCharacterStream(_StringReader.new(datasource.to_xml(opts).to_s))
         data_document = silence_warnings do
           # This is here to avoid the "already initialized constant DOCUMENT_POSITION_*" warnings.
           _JRXmlUtils._invoke('parse', 'Lorg.xml.sax.InputSource;', input_source)
